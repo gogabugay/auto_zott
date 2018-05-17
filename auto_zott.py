@@ -178,6 +178,7 @@ for c in range (2,9):
     for i in range (15,31):
         metroregion.cell(row=c, column=i, value=metro_reg.cell(row=c, column=i-6).value)
 
+otchet.save('test' + str(today) + '.xlsx')
 #print(lenta.cell(row=38, column=15).value.date())
 
 #test_parser = parser.parse(lenta.cell(row=38, column=15).value, dayfirst=True)
@@ -186,7 +187,6 @@ for c in range (2,9):
 
 #for l in range (3,30):
 #    print(lenta_m.cell(row=l, column=7).value.strftime("%d.%m.%y"))
-otchet.save('test.xlsx')
 
 #print(type(lenta_m.cell(row=3, column=7).value))
 
