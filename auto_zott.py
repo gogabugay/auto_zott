@@ -11,9 +11,10 @@ victoria_m = moscow['Виктория']
 result = otchet['Отчёт']
 
 today = date.today()
+friday = date.today() - timedelta(3)
 result.cell(row = 2, column = 3, value = today)
 #print(yesterday.strftime('%d.%m.%y'))
-print(victoria.cell(row=26,column=13).value)
+#print(victoria.cell(row=26,column=13).value)
 
 for i in range (2,28):
     victoria.cell(row=i, column = 13, value = victoria_m.cell(row=i, column=5).value.date())
@@ -84,11 +85,98 @@ for c in range (2,11):
     for i in range (15,20):
         okay.cell(row=c, column=i, value=okay_m.cell(row=c, column=i-8).value)
 
-'''for s in range (2,29):
-	for t in range (5,18):
-		lenta.cell(row=s, column=t, value= lenta_m.cell(row=s+34, column=t).value)
-'''
 
+lentaspb = otchet['Лента СПб']
+lenta_s = saint_p['Лента СПб']
+
+for i in range(2,30):
+    lentaspb.cell(row=i, column = 13, value = friday)
+
+for c in range (2,30):
+    for i in range (15,22):
+        lentaspb.cell(row=c, column=i, value=lenta_s.cell(row=c, column=i-1).value)
+
+karuselspb = otchet['Карусель СПб']
+karusel_s = saint_p['Карусель СПб']
+
+for i in range(2,16):
+    karuselspb.cell(row=i, column = 13, value = friday)
+
+for c in range (2,16):
+    for i in range (15,26):
+        karuselspb.cell(row=c, column=i, value=karusel_s.cell(row=c, column=i-1).value)
+
+metrospb = otchet['Метро СПб']
+metro_s = saint_p['Метро СПб']
+
+for i in range(2,5):
+    metrospb.cell(row=i, column = 13, value = friday)
+
+for c in range (2,5):
+    for i in range (15,31):
+        metrospb.cell(row=c, column=i, value=metro_s.cell(row=c, column=i-1).value)
+
+lime = otchet['Лайм СПб']
+lime_s = saint_p['Лайм СПб']
+
+for i in range(2,13):
+    lime.cell(row=i, column = 13, value = friday)
+
+for c in range (2,13):
+    for i in range (15,25):
+        lime.cell(row=c, column=i, value=lime_s.cell(row=c, column=i-1).value)
+
+spar = otchet['Спар СПб']
+spar_s = saint_p['Спар СПб']
+
+for i in range(2,18):
+    spar.cell(row=i, column = 13, value = friday)
+
+for c in range (2,18):
+    for i in range (15,22):
+        spar.cell(row=c, column=i, value=spar_s.cell(row=c, column=i-1).value)
+
+okayspb = otchet['Окей СПб']
+okay_s = saint_p['ОКЕЙ']
+
+for i in range(2,23):
+    okayspb.cell(row=i, column = 13, value = friday)
+
+for c in range (2,23):
+    for i in range (15,20):
+        okayspb.cell(row=c, column=i, value=okay_s.cell(row=c, column=i+4).value)
+
+auchan = otchet['Ашан Регион']
+auchan_m = moscow['Ашан Регион']
+print (auchan_m.cell(row=2, column=6).value)
+
+for b in range (2,10):
+    auchan.cell(row=b, column=13, value=auchan_m.cell(row=b, column=6).value.date())
+
+for c in range (2,10):
+    for i in range (15,24):
+        auchan.cell(row=c, column=i, value=auchan_m.cell(row=c, column=i-7).value)
+
+
+lentaregion = otchet['Лента Регион']
+lenta_reg = moscow['Лента Регион']
+
+for b in range (2,21):
+    lentaregion.cell(row=b, column=13, value=lenta_reg.cell(row=b, column=6).value.date())
+
+for c in range (2,21):
+    for i in range (15,22):
+        lentaregion.cell(row=c, column=i, value=lenta_reg.cell(row=c, column=i-7).value)
+
+metroregion = otchet['Метро Регион']
+metro_reg = moscow['Метро Регион']
+
+for b in range (2,9):
+    metroregion.cell(row=b, column=13, value=metro_reg.cell(row=b, column=7).value.date())
+
+for c in range (2,9):
+    for i in range (15,31):
+        metroregion.cell(row=c, column=i, value=metro_reg.cell(row=c, column=i-6).value)
 
 #print(lenta.cell(row=38, column=15).value.date())
 
