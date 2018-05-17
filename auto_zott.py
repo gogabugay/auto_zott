@@ -2,7 +2,7 @@ import openpyxl
 import datetime
 from datetime import date, timedelta
 from dateutil import parser
-otchet = openpyxl.load_workbook('Zott - 14.05.xlsx')
+otchet = openpyxl.load_workbook('Zott - 14.05.xlsx', data_only=True)
 moscow = openpyxl.load_workbook('Zott.xlsx')
 saint_p = openpyxl.load_workbook('07.05-13.05.18_ZOTT_ОТЧЕТ _СПб.xlsx')
 
@@ -24,6 +24,14 @@ for k in range (2,28):
     for m in range(15,26):
         victoria.cell(row=k, column=m, value=victoria_m.cell(row=k,column=m-8).value)
 
+print((victoria.cell(row=3, column=28).value))
+
+#проверка комментов
+for j in range(2,28):
+    if victoria.cell(row=j, column=28).value==None and victoria.cell(row=j, column=27).value<1 and victoria_m.cell(row=j, column=20).value != None:
+        victoria.cell(row=j, column=28, value = victoria_m.cell(row=j, column=20).value)
+    elif victoria.cell(row=j, column=28).value==None and victoria.cell(row=j, column=27).value<1 and victoria_m.cell(row=j, column=20).value == None:
+        victoria.cell(row=j, column=28).value = 'Ожидается поставка с' + ' ' + str(today)
 
 lenta = otchet['Лента']
 lenta_m = moscow['Лента']
@@ -34,6 +42,11 @@ for j in range (2,11):
 for l in range (2,11):
     for a in range (15,22):
         lenta.cell(row=l, column=a, value = lenta_m.cell(row=l, column=a-8).value)
+for i in range (2,11):
+    if lenta.cell(row=i, column=21).value==None and lenta.cell(row=i, column=20).value<1 and lenta_m.cell(row=i, column=16).value !=None:
+        lenta.cell(row=j, column=21, value= lenta_m.cell(row=i,column=16).value)
+    #else:
+    #    lenta.cell_
 
 globus = otchet['ГиперГлобус']
 globus_m = moscow['ГиперГлобус']
