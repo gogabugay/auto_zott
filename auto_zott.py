@@ -2,9 +2,30 @@ import openpyxl
 import datetime
 from datetime import date, timedelta
 from dateutil import parser
-otchet = openpyxl.load_workbook('Zott - 14.05.xlsx', data_only=True)
+otchet = openpyxl.load_workbook('Zott - 14.05.xlsx')
 moscow = openpyxl.load_workbook('Zott.xlsx')
 saint_p = openpyxl.load_workbook('07.05-13.05.18_ZOTT_ОТЧЕТ _СПб.xlsx')
+otchet_1 = openpyxl.load_workbook('Zott - 14.05 (копия).xlsx', data_only=True)
+
+
+victoria_1 = otchet_1['Виктория']
+lenta_1 = otchet_1['Лента']
+globus_1 = otchet_1['ГиперГлобус']
+karusel_1 = otchet_1['Карусель']
+metro_1 = otchet_1['Метро']
+perek_1 = otchet_1['Перекрёсток']
+okay_1 = otchet_1['Окей']
+lenta_s1 = otchet_1['Лента СПб']
+karusel_s1 = otchet_1['Карусель СПб']
+metro_s1 = otchet_1['Метро СПб']
+lime_s1 = otchet_1['Лайм СПб']
+spar_s1 = otchet_1['Спар СПб']
+okay_s1 = otchet_1['Окей СПб']
+auchan_reg1 = otchet_1['Ашан Регион']
+lenta_reg1 = otchet_1['Лента Регион']
+metro_reg1 = otchet_1['Метро Регион']
+
+
 
 victoria = otchet['Виктория']
 victoria_m = moscow['Виктория']
@@ -16,6 +37,7 @@ result.cell(row = 2, column = 3, value = today)
 #print(yesterday.strftime('%d.%m.%y'))
 #print(victoria.cell(row=26,column=13).value)
 
+
 for i in range (2,28):
     victoria.cell(row=i, column = 13, value = victoria_m.cell(row=i, column=5).value.date())
 #lenta.cell(row=65, column=30, value='=COUNTIF(O3:O62'+',"='+ yesterday.strftime('%d.%m.%y')+'"')
@@ -23,15 +45,11 @@ for i in range (2,28):
 for k in range (2,28):
     for m in range(15,26):
         victoria.cell(row=k, column=m, value=victoria_m.cell(row=k,column=m-8).value)
+        victoria_1.cell(row=k, column=m, value=victoria_m.cell(row=k,column=m-8).value)
 
-print((victoria.cell(row=3, column=28).value))
+
 
 #проверка комментов
-for j in range(2,28):
-    if victoria.cell(row=j, column=28).value==None and victoria.cell(row=j, column=27).value<1 and victoria_m.cell(row=j, column=20).value != None:
-        victoria.cell(row=j, column=28, value = victoria_m.cell(row=j, column=20).value)
-    elif victoria.cell(row=j, column=28).value==None and victoria.cell(row=j, column=27).value<1 and victoria_m.cell(row=j, column=20).value == None:
-        victoria.cell(row=j, column=28).value = 'Ожидается поставка с' + ' ' + str(today)
 
 lenta = otchet['Лента']
 lenta_m = moscow['Лента']
@@ -42,11 +60,7 @@ for j in range (2,11):
 for l in range (2,11):
     for a in range (15,22):
         lenta.cell(row=l, column=a, value = lenta_m.cell(row=l, column=a-8).value)
-for i in range (2,11):
-    if lenta.cell(row=i, column=21).value==None and lenta.cell(row=i, column=20).value<1 and lenta_m.cell(row=i, column=16).value !=None:
-        lenta.cell(row=j, column=21, value= lenta_m.cell(row=i,column=16).value)
-    #else:
-    #    lenta.cell_
+        lenta_1.cell(row=l, column=a, value = lenta_m.cell(row=l, column=a-8).value)
 
 globus = otchet['ГиперГлобус']
 globus_m = moscow['ГиперГлобус']
@@ -57,6 +71,8 @@ for b in range (2,8):
 for c in range (2,8):
     for i in range (15,22):
         globus.cell(row=c, column=i, value=globus_m.cell(row=c, column=i-8).value)
+        globus_1.cell(row=c, column=i, value=globus_m.cell(row=c, column=i-8).value)
+
 
 karusel = otchet['Карусель']
 karusel_m = moscow['Карусель']
@@ -67,6 +83,8 @@ for b in range (2,23):
 for c in range (2,23):
     for i in range (14,26):
         karusel.cell(row=c, column=i, value=karusel_m.cell(row=c, column=i-7).value)
+        karusel_1.cell(row=c, column=i, value=karusel_m.cell(row=c, column=i-7).value)
+
 
 metro = otchet['Метро']
 metro_m = moscow['Метро']
@@ -77,6 +95,8 @@ for b in range (2,20):
 for c in range (2,20):
     for i in range (15,31):
         metro.cell(row=c, column=i, value=metro_m.cell(row=c, column=i-8).value)
+        metro_1.cell(row=c, column=i, value=metro_m.cell(row=c, column=i-8).value)
+
 
 perek = otchet['Перекрёсток']
 perek_m = moscow['Перекрёсток']
@@ -87,6 +107,7 @@ for b in range (2,80):
 for c in range (2,80):
     for i in range (15,21):
         perek.cell(row=c, column=i, value=perek_m.cell(row=c, column=i-8).value)
+        perek_1.cell(row=c, column=i, value=perek_m.cell(row=c, column=i-8).value)
 
 okay = otchet['Окей']
 okay_m = moscow['Окей']
@@ -97,6 +118,7 @@ for b in range (2,11):
 for c in range (2,11):
     for i in range (15,20):
         okay.cell(row=c, column=i, value=okay_m.cell(row=c, column=i-8).value)
+        okay_1.cell(row=c, column=i, value=okay_m.cell(row=c, column=i-8).value)
 
 
 lentaspb = otchet['Лента СПб']
@@ -161,7 +183,7 @@ for c in range (2,23):
 
 auchan = otchet['Ашан Регион']
 auchan_m = moscow['Ашан Регион']
-print (auchan_m.cell(row=2, column=6).value)
+#print (auchan_m.cell(row=2, column=6).value)
 
 for b in range (2,10):
     auchan.cell(row=b, column=13, value=auchan_m.cell(row=b, column=6).value.date())
@@ -191,8 +213,163 @@ for c in range (2,9):
     for i in range (15,31):
         metroregion.cell(row=c, column=i, value=metro_reg.cell(row=c, column=i-6).value)
 
-otchet.save('test' + str(today) + '.xlsx')
+for i in range (2,28):
+    count=0
+    count1=0
+    for j in range (15,26):
+        if victoria_1.cell(row=i, column=j).value == 'х':
+            count+=1
+            victoria_1.cell(row=i, column=14, value=11-count)
+        elif victoria_1.cell(row=i, column=j).value==1:
+            count1+=1
+            victoria_1.cell(row=i, column=26, value=count1)
+
+for g in range (2,28):
+    victoria_1.cell(row=g, column=27, value= victoria_1.cell(row=g, column=26).value / victoria_1.cell(row=g, column=14).value)
+
+
+for i in range (2,28):
+    victoria.cell(row=i, column=28, value= victoria_m.cell(row=i,column=20).value)
+
+for j in range(2,28):
+    if victoria.cell(row=j, column=28).value==None and victoria_1.cell(row=j, column=27).value<1:
+        victoria.cell(row=j, column=28).value = 'Ожидается поставка с' + ' ' + str(today)
+
+for i in range (2,11):
+    count=0
+    count1=0
+    for j in range (15,22):
+        if lenta_1.cell(row=i, column=j).value == 'х':
+            count+=1
+            lenta_1.cell(row=i, column=14, value=7-count)
+        elif lenta_1.cell(row=i, column=j).value==1:
+            count1+=1
+            lenta_1.cell(row=i, column=22, value=count1)
+
+for g in range (2,11):
+    lenta_1.cell(row=g, column=23, value= lenta_1.cell(row=g, column=22).value / lenta_1.cell(row=g, column=14).value)
+
+
+for i in range (2,11):
+    lenta.cell(row=i, column=24, value= lenta_m.cell(row=i,column=16).value)
+
+
+for j in range (2,11):
+    if lenta.cell(row=j, column=24).value==None and lenta_1.cell(row=j, column=23).value<1:
+        lenta.cell(row=j, column=24, value='Ожидается поставка с' + ' ' + str(today))
+
+for i in range (2,8):
+    count=0
+    count1=0
+    for j in range (15,22):
+        if globus_1.cell(row=i, column=j).value == 'х':
+            count+=1
+            globus_1.cell(row=i, column=14, value=11-count)
+        elif globus_1.cell(row=i, column=j).value==1:
+            count1+=1
+            globus_1.cell(row=i, column=22, value=count1)
+
+for g in range (2,8):
+    globus_1.cell(row=g, column=23, value= globus_1.cell(row=g, column=22).value / globus_1.cell(row=g, column=14).value)
+
+for i in range (2,11):
+    globus.cell(row=i, column=24, value= lenta_m.cell(row=i,column=16).value)
+
+for i in range (2,8):
+    if globus.cell(row=i, column=24).value==None and globus_1.cell(row=i, column=23).value<1:
+        globus.cell(row=j, column=24, value='Ожидается поставка с' + ' ' + str(today))
+
+for i in range (2,23):
+    count=0
+    count1=0
+    for j in range (14,26):
+        if karusel_1.cell(row=i, column=j).value == 'х':
+            count+=1
+            karusel_1.cell(row=i, column=13, value=12-count)
+        elif karusel_1.cell(row=i, column=j).value==1:
+            count1+=1
+            karusel_1.cell(row=i, column=26, value=count1)
+
+for g in range (2,23):
+    karusel_1.cell(row=g, column=27, value= karusel_1.cell(row=g, column=26).value / karusel_1.cell(row=g, column=13).value)
+
+for i in range (2,23):
+    karusel.cell(row=i, column=28, value= lenta_m.cell(row=i,column=21).value)
+
+for i in range (2,23):
+    if karusel.cell(row=i, column=28).value==None and karusel_1.cell(row=i, column=27).value<1:
+        karusel.cell(row=j, column=28, value='Ожидается поставка с' + ' ' + str(today))
+
+for i in range (2,20):
+    count=0
+    count1=0
+    for j in range (15,31):
+        if metro_1.cell(row=i, column=j).value == 'х':
+            count+=1
+            metro_1.cell(row=i, column=14, value=16-count)
+        elif metro_1.cell(row=i, column=j).value==1:
+            count1+=1
+            metro_1.cell(row=i, column=31, value=count1)
+
+for g in range (2,20):
+    metro_1.cell(row=g, column=32, value= metro_1.cell(row=g, column=31).value / metro_1.cell(row=g, column=14).value)
+
+for i in range (2,20):
+    metro.cell(row=i, column=33, value= lenta_m.cell(row=i,column=25).value)
+
+for i in range (2,20):
+    if metro.cell(row=i, column=33).value==None and metro_1.cell(row=i, column=32).value<1:
+        metro.cell(row=j, column=33, value='Ожидается поставка с '+ str(today))
+
+for i in range (2,80):
+    count=0
+    count1=0
+    for j in range (15,21):
+        if perek_1.cell(row=i, column=j).value == 'х':
+            count+=1
+            perek_1.cell(row=i, column=14, value=6-count)
+        elif perek_1.cell(row=i, column=j).value==1:
+            count1+=1
+            perek_1.cell(row=i, column=21, value=count1)
+
+for g in range (2,80):
+    perek_1.cell(row=g, column=22, value= perek_1.cell(row=g, column=21).value / perek_1.cell(row=g, column=14).value)
+
+for i in range (2,80):
+    perek.cell(row=i, column=23, value= lenta_m.cell(row=i,column=15).value)
+
+for i in range (2,80):
+    if perek.cell(row=i, column=23).value==None and perek_1.cell(row=i, column=22).value<1:
+        perek.cell(row=j, column=23, value='Ожидается поставка с '+ str(today))
+
+for i in range (2,11):
+    count=0
+    count1=0
+    for j in range (15,20):
+        if okay_1.cell(row=i, column=j).value == 'х':
+            count+=1
+            okay_1.cell(row=i, column=14, value=5-count)
+        elif okay_1.cell(row=i, column=j).value==1:
+            count1+=1
+            okay_1.cell(row=i, column=20, value=count1)
+
+for g in range (2,11):
+    okay_1.cell(row=g, column=21, value= okay_1.cell(row=g, column=20).value / okay_1.cell(row=g, column=14).value)
+
+for i in range (2,11):
+    okay.cell(row=i, column=22, value= lenta_m.cell(row=i,column=14).value)
+
+#print(okay_1.cell(row=2, column=21).value)
+for i in range (2,11):
+    if okay.cell(row=i, column=22).value==None and okay_1.cell(row=i, column=21).value<1:
+        okay.cell(row=j, column=22, value='Ожидается поставка с '+ str(today))
+
+print((victoria_1.cell(row=24, column=27).value))
+
+
 #print(lenta.cell(row=38, column=15).value.date())
+otchet_1.save('test.xlsx')
+otchet.save('zott' + str(today) + '.xlsx')
 
 #test_parser = parser.parse(lenta.cell(row=38, column=15).value, dayfirst=True)
 #print(test_parser)
