@@ -2,9 +2,9 @@ import openpyxl
 import datetime
 from datetime import date, timedelta
 from dateutil import parser
-otchet = openpyxl.load_workbook('Zott - 21.05.xlsx')
+otchet = openpyxl.load_workbook('Zott - 02.07.xlsx')
 moscow = openpyxl.load_workbook('Zott.xlsx')
-saint_p = openpyxl.load_workbook('07.05-13.05.18_ZOTT_ОТЧЕТ _СПб.xlsx')
+saint_p = openpyxl.load_workbook('02.07-08.07.18_ZOTT_ОТЧЕТ _СПб.xlsx')
 
 victoria = otchet['Виктория']
 victoria_m = moscow['Виктория']
@@ -16,11 +16,11 @@ result.cell(row = 2, column = 3, value = today)
 #print(yesterday.strftime('%d.%m.%y'))
 #print(victoria.cell(row=26,column=13).value)
 
-for i in range (2,28):
+for i in range (2,26):
     victoria.cell(row=i, column = 13, value = victoria_m.cell(row=i, column=5).value.date())
 #lenta.cell(row=65, column=30, value='=COUNTIF(O3:O62'+',"='+ yesterday.strftime('%d.%m.%y')+'"')
 
-for k in range (2,28):
+for k in range (2,26):
     for m in range(15,26):
         victoria.cell(row=k, column=m, value=victoria_m.cell(row=k,column=m-8).value)
 
@@ -42,16 +42,16 @@ for b in range (2,8):
     globus.cell(row=b, column=13, value=globus_m.cell(row=b, column=5).value.date())
 
 for c in range (2,8):
-    for i in range (15,22):
+    for i in range (15,26):
         globus.cell(row=c, column=i, value=globus_m.cell(row=c, column=i-8).value)
 
 karusel = otchet['Карусель']
 karusel_m = moscow['Карусель']
 
-for b in range (2,23):
+for b in range (2,22):
     karusel.cell(row=b, column=12, value=karusel_m.cell(row=b, column=5).value.date())
 
-for c in range (2,23):
+for c in range (2,22):
     for i in range (14,26):
         karusel.cell(row=c, column=i, value=karusel_m.cell(row=c, column=i-7).value)
 
@@ -62,28 +62,36 @@ for b in range (2,20):
     metro.cell(row=b, column=13, value=metro_m.cell(row=b, column=5).value.date())
 
 for c in range (2,20):
-    for i in range (15,31):
+    for i in range (15,32):
         metro.cell(row=c, column=i, value=metro_m.cell(row=c, column=i-8).value)
 
 perek = otchet['Перекрёсток']
 perek_m = moscow['Перекрёсток']
 
-for b in range (2,80):
+for b in range (2,89):
     perek.cell(row=b, column=13, value=perek_m.cell(row=b, column=6).value.date())
 
-for c in range (2,80):
+for c in range (2,89):
     for i in range (15,21):
         perek.cell(row=c, column=i, value=perek_m.cell(row=c, column=i-8).value)
 
 okay = otchet['Окей']
 okay_m = moscow['Окей']
 
-for b in range (2,11):
+for b in range (2,12):
     okay.cell(row=b, column=13, value=okay_m.cell(row=b, column=5).value.date())
 
-for c in range (2,11):
+for c in range (2,12):
     for i in range (15,20):
         okay.cell(row=c, column=i, value=okay_m.cell(row=c, column=i-8).value)
+
+alie_parusa = otchet['Алые паруса']
+alie_parusa_m = moscow['Алые паруса']
+
+alie_parusa.cell(row=2, column=13, value=okay_m.cell(row=2, column=5).value.date())
+
+for i in range (12,28):
+    alie_parusa.cell(row=2, column=i, value=okay_m.cell(row=c, column=i-5).value)
 
 
 lentaspb = otchet['Лента СПб']
@@ -116,7 +124,7 @@ for c in range (2,5):
     for i in range (15,31):
         metrospb.cell(row=c, column=i, value=metro_s.cell(row=c, column=i-1).value)
 
-lime = otchet['Лайм СПб']
+'''lime = otchet['Лайм СПб']
 lime_s = saint_p['Лайм СПб']
 
 for i in range(2,13):
@@ -124,7 +132,7 @@ for i in range(2,13):
 
 for c in range (2,13):
     for i in range (15,25):
-        lime.cell(row=c, column=i, value=lime_s.cell(row=c, column=i-1).value)
+        lime.cell(row=c, column=i, value=lime_s.cell(row=c, column=i-1).value)'''
 
 spar = otchet['Спар СПб']
 spar_s = saint_p['Спар СПб']
@@ -133,11 +141,11 @@ for i in range(2,18):
     spar.cell(row=i, column = 13, value = friday)
 
 for c in range (2,18):
-    for i in range (15,22):
-        spar.cell(row=c, column=i, value=spar_s.cell(row=c, column=i-1).value)
+    for i in range (15,23):
+        spar.cell(row=c, column=i, value=spar_s.cell(row=c, column=i).value)
 
 okayspb = otchet['Окей СПб']
-okay_s = saint_p['ОКЕЙ']
+okay_s = saint_p['ОКЕЙ СПб']
 
 for i in range(2,23):
     okayspb.cell(row=i, column = 13, value = friday)
@@ -145,6 +153,16 @@ for i in range(2,23):
 for c in range (2,23):
     for i in range (15,20):
         okayspb.cell(row=c, column=i, value=okay_s.cell(row=c, column=i+4).value)
+
+auchan_s = otchet ['Ашан СПБ']
+auchan_spb = saint_p ['Ашан СПб']
+
+for i in range (2,11):
+    auchan_s.cell(row=i, column=12, value=friday)
+
+for c in range (2,11):
+    for i in range (14,29):
+        auchan_s.cell(row=c, column=i, value=auchan_spb.cell(row=c, column=i+2).value)
 
 auchan = otchet['Ашан Регион']
 auchan_m = moscow['Ашан Регион']
@@ -175,9 +193,10 @@ for b in range (2,9):
     metroregion.cell(row=b, column=13, value=metro_reg.cell(row=b, column=7).value.date())
 
 for c in range (2,9):
-    for i in range (15,31):
+    for i in range (15,32):
         metroregion.cell(row=c, column=i, value=metro_reg.cell(row=c, column=i-6).value)
 
+#копируем комменты
 for i in range (2,28):
     victoria.cell(row=i, column=28, value=victoria_m.cell(row=i,column=20).value)
 
@@ -185,25 +204,27 @@ for i in range (2,11):
     lenta.cell(row=i, column=24, value=lenta_m.cell(row=i,column=16).value)
 
 for i in range (2,8):
-    globus.cell(row=i, column=24, value=globus_m.cell(row=i,column=16).value)
+    globus.cell(row=i, column=28, value=globus_m.cell(row=i,column=20).value)
 
 for i in range (2,23):
     karusel.cell(row=i, column=28, value=karusel_m.cell(row=i,column=21).value)
 
 for i in range (2,20):
-    metro.cell(row=i, column=33, value=metro_m.cell(row=i,column=25).value)
+    metro.cell(row=i, column=34, value=metro_m.cell(row=i,column=26).value)
 
-for i in range (2,80):
+for i in range (2,92):
     perek.cell(row=i, column=23, value=perek_m.cell(row=i,column=15).value)
 
 for i in range (2,11):
     okay.cell(row=i, column=22, value=okay_m.cell(row=i,column=14).value)
 
+alie_parusa.cell(row=2, column=30, value=alie_parusa_m(row=2, column=25).value)
+
 for i in range (2,10):
     auchan.cell(row=i, column=26, value=auchan_m.cell(row=i,column=19).value)
 
 for i in range (2,9):
-    metroregion.cell(row=i, column=22, value=metro_reg.cell(row=i,column=33).value)
+    metroregion.cell(row=i, column=34, value=metro_reg.cell(row=i,column=28).value)
 
 
 
