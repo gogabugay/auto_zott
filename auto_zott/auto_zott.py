@@ -2,9 +2,9 @@ import openpyxl
 import datetime
 from datetime import date, timedelta
 from dateutil import parser
-otchet = openpyxl.load_workbook('Zott - 02.07.xlsx')
+otchet = openpyxl.load_workbook('Zott_otchet.xlsx')
 moscow = openpyxl.load_workbook('Zott.xlsx')
-saint_p = openpyxl.load_workbook('02.07-08.07.18_ZOTT_ОТЧЕТ _СПб.xlsx')
+saint_p = openpyxl.load_workbook('Zott_spb.xlsx')
 
 victoria = otchet['Виктория']
 victoria_m = moscow['Виктория']
@@ -17,12 +17,12 @@ result.cell(row = 2, column = 3, value = today)
 #print(victoria.cell(row=26,column=13).value)
 
 for i in range (2,26):
-    victoria.cell(row=i, column = 13, value = victoria_m.cell(row=i, column=5).value.date())
+    victoria.cell(row=i, column = 13, value = victoria_m.cell(row=i+1, column=5).value.date())
 #lenta.cell(row=65, column=30, value='=COUNTIF(O3:O62'+',"='+ yesterday.strftime('%d.%m.%y')+'"')
 
 for k in range (2,26):
-    for m in range(15,26):
-        victoria.cell(row=k, column=m, value=victoria_m.cell(row=k,column=m-8).value)
+    for m in range(15,27):
+        victoria.cell(row=k, column=m, value=victoria_m.cell(row=k+1,column=m-8).value)
 
 
 lenta = otchet['Лента']
@@ -32,17 +32,17 @@ for j in range (2,11):
     lenta.cell(row=j, column=13, value = lenta_m.cell(row=j, column=5).value.date())
 
 for l in range (2,11):
-    for a in range (15,22):
+    for a in range (15,23):
         lenta.cell(row=l, column=a, value = lenta_m.cell(row=l, column=a-8).value)
 
 globus = otchet['ГиперГлобус']
 globus_m = moscow['ГиперГлобус']
 
-for b in range (2,8):
+for b in range (2,9):
     globus.cell(row=b, column=13, value=globus_m.cell(row=b, column=5).value.date())
 
-for c in range (2,8):
-    for i in range (15,26):
+for c in range (2,9):
+    for i in range (15,27):
         globus.cell(row=c, column=i, value=globus_m.cell(row=c, column=i-8).value)
 
 karusel = otchet['Карусель']
@@ -59,11 +59,11 @@ metro = otchet['Метро']
 metro_m = moscow['Метро']
 
 for b in range (2,20):
-    metro.cell(row=b, column=13, value=metro_m.cell(row=b, column=5).value.date())
+    metro.cell(row=b, column=13, value=metro_m.cell(row=b+1, column=5).value.date())
 
 for c in range (2,20):
-    for i in range (15,32):
-        metro.cell(row=c, column=i, value=metro_m.cell(row=c, column=i-8).value)
+    for i in range (15,34):
+        metro.cell(row=c, column=i, value=metro_m.cell(row=c+1, column=i-8).value)
 
 perek = otchet['Перекрёсток']
 perek_m = moscow['Перекрёсток']
@@ -82,16 +82,16 @@ for b in range (2,12):
     okay.cell(row=b, column=13, value=okay_m.cell(row=b, column=5).value.date())
 
 for c in range (2,12):
-    for i in range (15,20):
+    for i in range (15,21):
         okay.cell(row=c, column=i, value=okay_m.cell(row=c, column=i-8).value)
 
 alie_parusa = otchet['Алые паруса']
 alie_parusa_m = moscow['Алые паруса']
 
-alie_parusa.cell(row=2, column=13, value=okay_m.cell(row=2, column=5).value.date())
+alie_parusa.cell(row=2, column=10, value=okay_m.cell(row=2, column=5).value.date())
 
 for i in range (12,28):
-    alie_parusa.cell(row=2, column=i, value=okay_m.cell(row=c, column=i-5).value)
+    alie_parusa.cell(row=2, column=i, value=alie_parusa_m.cell(row=c, column=i-5).value)
 
 
 lentaspb = otchet['Лента СПб']
@@ -172,7 +172,7 @@ for b in range (2,10):
     auchan.cell(row=b, column=13, value=auchan_m.cell(row=b, column=6).value.date())
 
 for c in range (2,10):
-    for i in range (15,24):
+    for i in range (15,26):
         auchan.cell(row=c, column=i, value=auchan_m.cell(row=c, column=i-7).value)
 
 
@@ -193,35 +193,38 @@ for b in range (2,9):
     metroregion.cell(row=b, column=13, value=metro_reg.cell(row=b, column=7).value.date())
 
 for c in range (2,9):
-    for i in range (15,32):
+    for i in range (15,34):
         metroregion.cell(row=c, column=i, value=metro_reg.cell(row=c, column=i-6).value)
 
 #копируем комменты
 for i in range (2,28):
-    victoria.cell(row=i, column=28, value=victoria_m.cell(row=i,column=20).value)
+    victoria.cell(row=i, column=29, value=victoria_m.cell(row=i+1,column=20).value)
 
 for i in range (2,11):
-    lenta.cell(row=i, column=24, value=lenta_m.cell(row=i,column=16).value)
+    lenta.cell(row=i, column=24, value=lenta_m.cell(row=i,column=17).value)
 
 for i in range (2,8):
-    globus.cell(row=i, column=28, value=globus_m.cell(row=i,column=20).value)
+    globus.cell(row=i, column=29, value=globus_m.cell(row=i,column=20).value)
 
 for i in range (2,23):
     karusel.cell(row=i, column=28, value=karusel_m.cell(row=i,column=21).value)
 
 for i in range (2,20):
-    metro.cell(row=i, column=34, value=metro_m.cell(row=i,column=26).value)
+    metro.cell(row=i, column=34, value=metro_m.cell(row=i+1,column=28).value)
 
 for i in range (2,92):
-    perek.cell(row=i, column=23, value=perek_m.cell(row=i,column=15).value)
+    perek.cell(row=i, column=22, value=perek_m.cell(row=i,column=15).value)
 
 for i in range (2,11):
-    okay.cell(row=i, column=22, value=okay_m.cell(row=i,column=14).value)
+    okay.cell(row=i, column=22, value=okay_m.cell(row=i,column=15).value)
 
-alie_parusa.cell(row=2, column=30, value=alie_parusa_m(row=2, column=25).value)
+alie_parusa.cell(row=2, column=30, value=alie_parusa_m.cell(row=2, column=25).value)
 
 for i in range (2,10):
     auchan.cell(row=i, column=26, value=auchan_m.cell(row=i,column=19).value)
+
+for i in range (2,21):
+    lentaregion.cell(row=i, column=23, value=lenta_reg.cell(row=i,column=18).value)
 
 for i in range (2,9):
     metroregion.cell(row=i, column=34, value=metro_reg.cell(row=i,column=28).value)
